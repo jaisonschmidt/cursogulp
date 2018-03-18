@@ -1,4 +1,6 @@
 /* Core.css */
 body {
     background: green;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
