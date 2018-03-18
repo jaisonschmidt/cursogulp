@@ -1,15 +1,1 @@
-/* Core.css */
-body {
-    background: green;
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-}
-/* grid */
-.container {
-    width: 100%;
-    display: table;
-}
-/* components */
-.card {
-    border: 1px solid black;
-}
+body{background:green;font-size:20px;font-family:'Courier New',Courier,monospace}.container{width:100%;display:table}.card{border:1px solid #000}
