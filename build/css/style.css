@@ -1,0 +1,15 @@
+/* components */
+
+.card {
+    border: 1px solid black;
+}
+/* Core.css */
+body {
+    background: green;
+}
+/* grid */
+
+.container {
+    width: 100%;
+    display: table;
+}
