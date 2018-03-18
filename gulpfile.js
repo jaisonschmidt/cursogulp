@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 var concat = require('gulp-concat');
-
+var cleanCSS = require('gulp-clean-css');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -23,7 +23,8 @@ gulp.task('html', function(){
  */
 gulp.task('css', function(){
     return gulp.src(cssFiles)
-    .pipe(concat('style.css'))
+    .pipe(concat('style.min.css'))
+    .pipe(cleanCSS())
     .pipe(gulp.dest('build/css/'))
 });
 
