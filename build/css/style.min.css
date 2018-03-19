@@ -1,1 +1,33 @@
-body{background:green;font-size:20px;font-family:'Courier New',Courier,monospace;padding:40px}.container{width:100%;display:table}.card{border:1px solid #000}
+/* Core.css */
+body {
+    background: green;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 40px;
+}
+
+::-webkit-input-placeholder {
+    color: gray;
+}
+
+:-ms-input-placeholder {
+    color: gray;
+}
+
+::-ms-input-placeholder {
+    color: gray;
+}
+
+::placeholder {
+    color: gray;
+}
+/* grid */
+.container {
+    width: 100%;
+    display: table;
+}
+/* components */
+.card {
+    border: 1px solid black;
+    border-radius: 5px;
+}

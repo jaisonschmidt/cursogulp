@@ -1,3 +1,7 @@
 /* components */
 .card {
-border: 1px solid black; }
+    border: 1px solid black; 
+
+    -webkit-border-radius : 5px;
+    border-radius: 5px;
+}
