@@ -11,6 +11,8 @@ var cssFiles = ['app/css/core.css',
                 'app/css/components.css'
             ];
 
+csslint.addFormatter('csslint-stylish');
+
 // copiar o arquivo index.html da pasta app para a pasta build
 
 /**
@@ -29,7 +31,7 @@ gulp.task('css', function(){
     .pipe(csslint({ 
         'shorthand' : true 
     }))
-    .pipe(csslint.formatter())
+    .pipe(csslint.formatter('stylish'))
     .pipe(concat('style.min.css'))
     //.pipe(cleanCSS())
     .pipe(cssBeautify())
