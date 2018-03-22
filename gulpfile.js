@@ -12,8 +12,6 @@ var cssFiles = ['app/css/core.css',
                 'app/css/components.css'
             ];
 
-// copiar o arquivo index.html da pasta app para a pasta build
-
 /**
  * Task HTML
  */
