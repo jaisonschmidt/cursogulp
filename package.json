@@ -17,7 +17,8 @@
     "gulp-cli": "^1.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssbeautify": "^1.0.0",
-    "gulp-csslint": "^1.0.1"
+    "gulp-csslint": "^1.0.1",
+    "gulp-csslint-report": "^2.0.0"
   },
   "dependencies": {},
   "browserslist": [

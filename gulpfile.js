@@ -5,13 +5,12 @@ var cleanCSS = require('gulp-clean-css');
 var cssBeautify = require('gulp-cssbeautify');
 var autoprefixer = require('gulp-autoprefixer');
 var csslint = require('gulp-csslint');
+var cssReport = require('gulp-csslint-report');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
                 'app/css/components.css'
             ];
-
-csslint.addFormatter('csslint-stylish');
 
 // copiar o arquivo index.html da pasta app para a pasta build
 
@@ -27,11 +26,15 @@ gulp.task('html', function(){
  * CSS
  */
 gulp.task('css', function(){
+
     return gulp.src(cssFiles)
     .pipe(csslint({ 
         'shorthand' : true 
     }))
-    .pipe(csslint.formatter('stylish'))
+    .pipe(cssReport({
+        'filename': 'index.html',
+        'directory': 'logs/csslint/'
+    }))
     .pipe(concat('style.min.css'))
     //.pipe(cleanCSS())
     .pipe(cssBeautify())
