@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var cssBeautify = require('gulp-cssbeautify');
 var autoprefixer = require('gulp-autoprefixer');
+var csslint = require('gulp-csslint');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -25,6 +26,10 @@ gulp.task('html', function(){
  */
 gulp.task('css', function(){
     return gulp.src(cssFiles)
+    .pipe(csslint({ 
+        'shorthand' : true 
+    }))
+    .pipe(csslint.formatter())
     .pipe(concat('style.min.css'))
     //.pipe(cleanCSS())
     .pipe(cssBeautify())

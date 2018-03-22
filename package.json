@@ -15,10 +15,11 @@
     "gulp-clean-css": "^3.9.3",
     "gulp-cli": "^1.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-cssbeautify": "^1.0.0"
+    "gulp-cssbeautify": "^1.0.0",
+    "gulp-csslint": "^1.0.1"
   },
   "dependencies": {},
-  "browserslist" : [
+  "browserslist": [
     "last 5 versions",
     "ie >= 7"
   ]
