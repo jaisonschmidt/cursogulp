@@ -28,9 +28,7 @@ gulp.task('html', function(){
 gulp.task('css', function(){
 
     return gulp.src(cssFiles)
-    .pipe(csslint({ 
-        'shorthand' : true 
-    }))
+    .pipe(csslint())
     .pipe(cssReport({
         'filename': 'index.html',
         'directory': 'logs/csslint/'
