@@ -6,6 +6,7 @@ var cssBeautify = require('gulp-cssbeautify');
 var autoprefixer = require('gulp-autoprefixer');
 var csslint = require('gulp-csslint');
 var cssReport = require('gulp-csslint-report');
+var sass = require('gulp-sass');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -36,8 +37,17 @@ gulp.task('css', function(){
     .pipe(cssBeautify())
     .pipe(autoprefixer())
     .pipe(gulp.dest('build/css/'))
+
 });
 
+/**
+ * Sass
+ */
+gulp.task('sassDev', function(){
+    return gulp.src('app/scss/style-sass.scss')
+           .pipe(sass())
+           .pipe(gulp.dest('build/css'));
+});
 
 /**
  * Task watch
