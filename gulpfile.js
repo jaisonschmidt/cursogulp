@@ -7,6 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var csslint = require('gulp-csslint');
 var cssReport = require('gulp-csslint-report');
 var sass = require('gulp-sass');
+var rename = require('gulp-rename');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -41,11 +42,21 @@ gulp.task('css', function(){
 });
 
 /**
- * Sass
+ * Sass - Dev
  */
 gulp.task('sassDev', function(){
     return gulp.src('app/scss/style-sass.scss')
-           .pipe(sass())
+           .pipe(sass().on('error', sass.logError))
+           .pipe(gulp.dest('build/css'));
+});
+
+/**
+ * Sass - Prod
+ */
+gulp.task('sassProd', function(){
+    return gulp.src('app/scss/style-sass.scss')
+           .pipe(sass({ outputStyle : "compressed" }).on('error', sass.logError))
+           .pipe(rename('style-sass.min.css'))
            .pipe(gulp.dest('build/css'));
 });
 
