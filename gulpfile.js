@@ -15,6 +15,12 @@ var cssFiles = ['app/css/core.css',
                 'app/css/components.css'
             ];
 
+var jsFiles = [
+                'app/javascript/core.js',
+                'app/javascript/header.js',
+                'app/javascript/footer.js'
+            ];
+
 /**
  * Task HTML
  */
@@ -71,14 +77,24 @@ gulp.task('less', function(){
 });
 
 /**
+ * Task de JavaScript
+ */
+gulp.task('js', function(){
+    return gulp.src(jsFiles)
+           .pipe(concat('script.js'))
+           .pipe(gulp.dest('build/js'))
+});
+
+/**
  * Task watch
  */
 gulp.task('watch', function(){
     gulp.watch('app/index.html', ['html']);
     gulp.watch('app/css/*.css', ['css']);
+    gulp.watch(jsFiles, ['js']);
 });
 
 /**
  * Task Default
  */
-gulp.task('default', ['html', 'css', 'watch']);
+gulp.task('default', ['html', 'css', 'js', 'watch']);
