@@ -7,6 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var csslint = require('gulp-csslint');
 var cssReport = require('gulp-csslint-report');
 var sass = require('gulp-sass');
+var less = require('gulp-less');
 var rename = require('gulp-rename');
 
 var cssFiles = ['app/css/core.css', 
@@ -57,6 +58,15 @@ gulp.task('sassProd', function(){
     return gulp.src('app/scss/style-sass.scss')
            .pipe(sass({ outputStyle : "compressed" }).on('error', sass.logError))
            .pipe(rename('style-sass.min.css'))
+           .pipe(gulp.dest('build/css'));
+});
+
+/**
+ * Less
+ */
+gulp.task('less', function(){
+    return gulp.src('app/less/*.less')
+           .pipe(less())
            .pipe(gulp.dest('build/css'));
 });
 
