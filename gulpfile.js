@@ -12,6 +12,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var jshint = require("gulp-jshint");
+var typescript = require('gulp-typescript');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -92,6 +93,19 @@ gulp.task('js', function(){
            .pipe(sourcemaps.write('.')) 
            .pipe(gulp.dest('build/js'))
 });
+
+/** 
+ * typescript 
+ * */
+
+ gulp.task('ts', function(){
+     return gulp.src('app/typescript/script.ts')
+            .pipe(typescript({
+                outFile : 'script-ts.js'
+            }))
+            .pipe(gulp.dest('build/js'))
+
+ });
 
 /**
  * Task watch
