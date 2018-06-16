@@ -11,6 +11,7 @@ var less = require('gulp-less');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
+var jshint = require("gulp-jshint");
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -83,6 +84,8 @@ gulp.task('less', function(){
  */
 gulp.task('js', function(){
     return gulp.src(jsFiles)
+           .pipe(jshint())
+           .pipe(jshint.reporter('jshint-stylish')) 
            .pipe(sourcemaps.init())
             .pipe(concat('script.min.js'))
             .pipe(uglify())
