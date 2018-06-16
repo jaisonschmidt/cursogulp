@@ -13,6 +13,7 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var jshint = require("gulp-jshint");
 var typescript = require('gulp-typescript');
+var htmlBeautify =  require('gulp-html-beautify');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -29,8 +30,9 @@ var jsFiles = [
  * Task HTML
  */
 gulp.task('html', function(){
-    return gulp.src('app/index.html')
-    .pipe(gulp.dest('build/'));
+    return gulp.src('app/template/**/*.html')
+           .pipe(htmlBeautify())
+           .pipe(gulp.dest('build/'));
 });
 
 /**
