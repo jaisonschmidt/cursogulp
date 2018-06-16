@@ -14,6 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var jshint = require("gulp-jshint");
 var typescript = require('gulp-typescript');
 var htmlBeautify =  require('gulp-html-beautify');
+var htmlMin = require('gulp-htmlmin')
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -31,7 +32,8 @@ var jsFiles = [
  */
 gulp.task('html', function(){
     return gulp.src('app/template/**/*.html')
-           .pipe(htmlBeautify())
+           //.pipe(htmlBeautify())
+           .pipe(htmlMin({collapseWhitespace: true}))
            .pipe(gulp.dest('build/'));
 });
 
