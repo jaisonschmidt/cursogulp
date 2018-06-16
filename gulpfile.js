@@ -9,6 +9,7 @@ var cssReport = require('gulp-csslint-report');
 var sass = require('gulp-sass');
 var less = require('gulp-less');
 var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -81,7 +82,8 @@ gulp.task('less', function(){
  */
 gulp.task('js', function(){
     return gulp.src(jsFiles)
-           .pipe(concat('script.js'))
+           .pipe(concat('script.min.js'))
+           .pipe(uglify())
            .pipe(gulp.dest('build/js'))
 });
 

@@ -1,1 +1,1 @@
-console.log('Core.js - alterado');
+console.log('Core.js');
