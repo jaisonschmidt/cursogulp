@@ -14,7 +14,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var jshint = require("gulp-jshint");
 var typescript = require('gulp-typescript');
 var htmlBeautify =  require('gulp-html-beautify');
-var htmlMin = require('gulp-htmlmin')
+var htmlMin = require('gulp-htmlmin');
+var imageMin = require('gulp-imagemin');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -26,6 +27,15 @@ var jsFiles = [
                 'app/javascript/header.js',
                 'app/javascript/footer.js'
             ];
+
+/**
+ * Task de imagens
+ */
+gulp.task('img', function(){
+    return gulp.src('app/images/**/*')
+           .pipe(imageMin())
+           .pipe(gulp.dest('build/img/'));
+});
 
 /**
  * Task HTML
