@@ -16,6 +16,7 @@ var typescript = require('gulp-typescript');
 var htmlBeautify =  require('gulp-html-beautify');
 var htmlMin = require('gulp-htmlmin');
 var imageMin = require('gulp-imagemin');
+var clean = require('gulp-clean');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -29,9 +30,17 @@ var jsFiles = [
             ];
 
 /**
+ * Limpar imagens
+ */
+gulp.task('clean-img', function(){
+    return gulp.src('build/img/**/*')
+           .pipe(clean());
+});
+
+/**
  * Task de imagens
  */
-gulp.task('img', function(){
+gulp.task('img', ['clean-img'], function(){
     return gulp.src('app/images/**/*')
            .pipe(imageMin())
            .pipe(gulp.dest('build/img/'));
