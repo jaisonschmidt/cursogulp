@@ -17,6 +17,7 @@ var htmlBeautify =  require('gulp-html-beautify');
 var htmlMin = require('gulp-htmlmin');
 var imageMin = require('gulp-imagemin');
 var clean = require('gulp-clean');
+var browserSync = require('browser-sync').create();
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -134,9 +135,14 @@ gulp.task('js', function(){
  * Task watch
  */
 gulp.task('watch', function(){
-    gulp.watch('app/index.html', ['html']);
-    gulp.watch('app/css/*.css', ['css']);
-    gulp.watch(jsFiles, ['js']);
+
+    browserSync.init({
+        server: './build'
+    });
+
+    gulp.watch('app/template/**/*.html', ['html']).on('change', browserSync.reload);
+    gulp.watch('app/css/*.css', ['css']).on('change', browserSync.reload);
+    gulp.watch(jsFiles, ['js']).on('change', browserSync.reload);
 });
 
 /**
