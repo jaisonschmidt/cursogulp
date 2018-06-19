@@ -19,6 +19,7 @@ var imageMin = require('gulp-imagemin');
 var clean = require('gulp-clean');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
 
 var cssFiles = ['app/css/core.css', 
                 'app/css/grid.css', 
@@ -53,7 +54,9 @@ gulp.task('img', ['clean-img'], function(){
  */
 gulp.task('html', function(){
     return gulp.src('app/template/**/*.html')
-           .pipe(plumber())
+            .pipe(plumber({
+                errorHandler: notify.onError("HTML Error: <%= error.message %>")
+            }))
            //.pipe(htmlBeautify())
            .pipe(htmlMin({collapseWhitespace: true}))
            .pipe(gulp.dest('build/'));
@@ -65,7 +68,9 @@ gulp.task('html', function(){
 gulp.task('css', function(){
 
     return gulp.src(cssFiles)
-    .pipe(plumber())
+    .pipe(plumber({
+        errorHandler: notify.onError("CSS Error: <%= error.message %>")
+    }))
     .pipe(csslint())
     .pipe(cssReport({
         'filename': 'index.html',
@@ -112,7 +117,9 @@ gulp.task('less', function(){
  */
 gulp.task('js', function(){
     return gulp.src(jsFiles)
-           .pipe(plumber())
+            .pipe(plumber({
+                errorHandler: notify.onError("JS Error: <%= error.message %>")
+            }))
            .pipe(jshint())
            .pipe(jshint.reporter('jshint-stylish')) 
            .pipe(sourcemaps.init())
